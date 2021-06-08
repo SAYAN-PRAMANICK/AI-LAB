@@ -1,0 +1,24 @@
+def pour(jug1, jug2,max1,max2,fill):
+    print(' ',jug2,'-----',jug1)
+    if jug2 is fill:
+        return
+    elif jug2 is max2:
+        pour(0, jug1,max1,max2,fill)
+    elif jug1 != 0 and jug2 == 0:
+        pour(0, jug1,max1,max2,fill)
+    elif jug1 is fill:
+        pour(jug1, 0,max1,max2,fill)
+    elif jug1 < max1:
+        pour(max1, jug2,max1,max2,fill)
+    elif jug1 < (max2 - jug2):
+        pour(0, (jug1 + jug2),max1,max2,fill)
+    else:
+        pour(jug1 - (max2 - jug2), (max2 - jug2) + jug2,max1,max2,fill)
+max1, max2, fill = int(input("jug1 = ")),\
+                   int(input("jug2 = ")), \
+                   int(input("required fill = "))
+print("JUG1\tJUG2")
+if max1>max2:
+    max1, max2 = max2, max1
+
+pour(0, 0,max1,max2,fill)
